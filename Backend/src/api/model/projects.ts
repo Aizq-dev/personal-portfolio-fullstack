@@ -1,13 +1,6 @@
+import mongoose from "mongoose";
+import { IProyect } from "../../types/models";
 
-import mongoose,{Document,Schema}from "mongoose";
-
-interface IProyect extends Document{
-    title: string;
-    img: string;
-    gif?: string;
-    description: string;
-    tech?: string[]
-}
 const projectSchema = new mongoose.Schema<IProyect>({
     title: {type:String, required: true},
     img: {type: String, required: true},

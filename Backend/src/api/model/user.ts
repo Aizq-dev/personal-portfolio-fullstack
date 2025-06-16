@@ -1,11 +1,7 @@
-import mongoose,{Document,Schema}from "mongoose";
+import mongoose from "mongoose";
+import { IUser } from "../../types/models";
 
-interface IUser extends Document{
-    user: string;
-    paswword: string;
-    role?: string;
-    
-}
+
 const userSchema = new mongoose.Schema<IUser>({
     user: {type:String, required: true, unique: true},
     paswword: {type: String, required: true},

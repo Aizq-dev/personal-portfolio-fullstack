@@ -1,16 +1,9 @@
-import mongoose,{Document,Schema}from "mongoose";
+import mongoose from "mongoose";
+import { IProfile } from "../../types/models"
 
-interface IProfile extends Document {
-  name: string;
-  avatar: string;
-  bio?: string;
-  github?: string;
-  linkedin?: string;
-  email?: string;
-  phone?: string; // opcional, si decides mostrarlo
-}
 
-const profileSchema = new Schema<IProfile>({
+
+const profileSchema = new mongoose.Schema<IProfile>({
   name: { type: String, required: true },
   avatar: { type: String, required: true },
   bio: { type: String },

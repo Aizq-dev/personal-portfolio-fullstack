@@ -1,12 +1,6 @@
-import mongoose,{Document,Schema}from "mongoose";
+import mongoose from "mongoose";
+import { IContact } from "../../types/models";
 
-interface IContact extends Document{
-    name: string;
-    company: string;
-    phone?: string;
-    email: string;
-    message: string;
-}
 const contactSchema = new mongoose.Schema<IContact>({
     name: {type:String, required: true},
     company: {type: String, required: true},
