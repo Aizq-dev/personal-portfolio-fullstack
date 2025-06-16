@@ -1,6 +1,5 @@
 import { setError } from "../../config/error";
 import { AsyncResponseServer } from "../../types/express";
-import {Request, Response, NextFunction} from "express"
 import { IProyect } from "../../types/models";
 import {  Project } from "../model/projects"
 import { CreateProjectDTO, UpdateProjectDTO}   from "../../types/dto.dto";
@@ -13,7 +12,7 @@ export const getAllprojects : AsyncResponseServer = async(req,res,next)=>{
          res.status(200).json(allProjects)
         
     } catch (error) {
-         next(setError(400,"Cant find projects 😢"))
+        return next(setError(400,"Cant find projects 😢"))
     }
 
 }
@@ -22,12 +21,12 @@ export const getProjectByID : AsyncResponseServer<{id: string}> = async(req,res,
         const {id} = req.params
         const project : IProyect | null = await Project.findById(id);
         if(!project){
-            next(setError(400,"Project not found 😢"))
+           return next(setError(400,"Project not found 😢"))
         }
          res.status(200).json(project)
         
     } catch (error) {
-         next(setError(400,"Can´t find project by id 😢"))
+        return next(setError(400,"Can´t find project by id 😢"))
     }
 }
 
@@ -35,11 +34,12 @@ export const createProject : AsyncResponseServer <{},CreateProjectDTO>= async(re
     try {
         const newProject = new Project(req.body);
         const projectBBDD: IProyect= await newProject.save();
-        if(!projectBBDD){next(setError(400,"Can't create Project "));}
+        if(!projectBBDD){
+            return next(setError(400,"Can't create Project "));}
          res.status(201).json(projectBBDD)
         
     } catch (error) {
-         next(setError(400,"Can't create Project 😢"));
+        return next(setError(400,"Can't create Project 😢"));
     }
 }
 
@@ -49,11 +49,11 @@ try {
     
     const project = await Project.findByIdAndDelete(id);
     if(!project){
-        next(setError(400,"Can't delete project  😢"));
+        return next(setError(400,"Can't delete project  😢"));
     }
     res.status(200).json(project);
 } catch (error) {
-     next(setError(400,"Can't delete project  😢"));
+    return  next(setError(400,"Can't delete project  😢"));
 }
 
 } 
@@ -75,6 +75,6 @@ export const updateProject: AsyncResponseServer<{ id: string }, UpdateProjectDTO
 
       res.status(200).json(updated);
     } catch (err) {
-      next(setError(400, "Can't update project 😢"));
+      return next(setError(400, "Can't update project 😢"));
     }
 };
