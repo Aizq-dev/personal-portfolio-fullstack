@@ -15,3 +15,15 @@ export type CreateContactDTO ={
     email:string;
     message: string
 }
+
+export type CreateProfileDTO = {
+  name: string;
+  avatar: string;
+  sloga?:string; 
+  bio?: string;
+  github?: string;
+  linkedin?: string;
+  email?: string;
+  phone?: string;    
+}
+export type UpdateProfileDTO = Partial<CreateProfileDTO>

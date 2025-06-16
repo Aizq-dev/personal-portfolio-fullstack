@@ -31,6 +31,7 @@ export interface IProfile extends Document {
     _id?:string;
   name: string;
   avatar: string;
+  sloga?:string; 
   bio?: string;
   github?: string;
   linkedin?: string;
