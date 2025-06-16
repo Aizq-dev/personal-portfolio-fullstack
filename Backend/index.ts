@@ -6,22 +6,22 @@ import { ErrorHandler, ResponseServer } from "./src/types/express";
 import { indexRouter } from "./src/api/routes/indexRouter";
 
 dotenv.config();
-
-
-
-
 const server = express();
+
 connectDB();
 
-
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
 
 // Rutas
+server.use("/api/v1/",indexRouter)
+
 //const serverWork: ResponseServer = (req,res,next)=>{return res.status(200).json("Esto funciona perfecto")}
 const notFound : ResponseServer = (  req,res,next)=>{ return  next(setError(404, "no tengo nada que ofrecerte"))}
 const error :ErrorHandler =( error, req,res,next)=>{ return  res.status(error.status || 500).json(error.message || "Internal server error")}
 
-//Middleware
-server.use("/api/v1", indexRouter)
+
+
 server.use("/", notFound)
 server.use(error)
 

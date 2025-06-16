@@ -2,7 +2,7 @@ import mongoose,{Document}from "mongoose";
 
 //Interfaz proyectos
 export interface IProyect extends Document{
-    id:string;
+    _id?:string;
     title: string;
     img: string;
     gif?: string;
@@ -11,7 +11,7 @@ export interface IProyect extends Document{
 }
 // Interfaz formulario contacto
 export interface IContact extends Document{
-    id:string;
+    _id?:string;
     name: string;
     company: string;
     phone?: string;
@@ -20,7 +20,7 @@ export interface IContact extends Document{
 }
 //Interfaz usuario
  export interface IUser extends Document{
-    id:string;
+    _id?:string;
     user: string;
     paswword: string;
     role?: string;
@@ -28,7 +28,7 @@ export interface IContact extends Document{
 }
 // Interfaz perfil
 export interface IProfile extends Document {
-    id:string;
+    _id?:string;
   name: string;
   avatar: string;
   bio?: string;
