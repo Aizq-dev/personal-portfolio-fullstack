@@ -1,6 +1,7 @@
 
-export type CreateProjectDTO = {
-  title: string;
+export type CreateProjectDTO = { 
+  _id:string;
+    title: string;
   img: string;
   gif?: string;
   description: string;
@@ -9,6 +10,7 @@ export type CreateProjectDTO = {
 export type UpdateProjectDTO = Partial<CreateProjectDTO>;
 
 export type CreateContactDTO ={
+      _id:string;
     name: string;
     company: string;
     phone: string;
@@ -17,7 +19,8 @@ export type CreateContactDTO ={
 }
 
 export type CreateProfileDTO = {
-  name: string;
+    _id:string;
+    name: string;
   avatar: string;
   sloga?:string; 
   bio?: string;
@@ -27,3 +30,9 @@ export type CreateProfileDTO = {
   phone?: string;    
 }
 export type UpdateProfileDTO = Partial<CreateProfileDTO>
+
+export type RegisterUserDTO = {
+  _id:string;
+    user: string;
+  password: string;
+};

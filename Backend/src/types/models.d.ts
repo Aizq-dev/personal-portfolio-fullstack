@@ -21,8 +21,8 @@ export interface IContact extends Document{
 //Interfaz usuario
  export interface IUser extends Document{
     _id?:string;
-    user: string;
-    paswword: string;
+    userName: string;
+    password: string;
     role?: string;
     
 }
