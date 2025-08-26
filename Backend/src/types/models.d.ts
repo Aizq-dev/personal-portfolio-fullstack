@@ -26,15 +26,35 @@ export interface IContact extends Document{
     role?: string;
     
 }
+// Interfaz Cv
+export interface IFileRef {
+  url: string;          // URL pública (Cloudinary/S3)
+  publicId?: string;    // id interno del storage (p.ej. Cloudinary)
+  filename?: string;
+  size?: number;        // bytes
+  mime?: string;        // 'application/pdf'
+  uploadedAt?: Date;
+}
 // Interfaz perfil
 export interface IProfile extends Document {
-    _id?:string;
   name: string;
   avatar: string;
-  sloga?:string; 
+  slogan?: string;      
   bio?: string;
-  github?: string;
-  linkedin?: string;
-  email?: string;
-  phone?: string; 
+
+  links?: {
+    github?: string;
+    linkedin?: string;
+    other?: Array<{ label: string; url: string }>; // flexibles extra
+  };
+
+  contact?: {
+    email?: string;
+    phone?: string;
+  };
+
+  cv?: {
+    current?: IFileRef;     // versión activa
+    history?: IFileRef[];   // versiones anteriores (opcional)
+  };
 }
