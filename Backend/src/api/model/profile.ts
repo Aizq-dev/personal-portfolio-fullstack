@@ -14,6 +14,7 @@ const FileRefSchema = new mongoose.Schema<IFileRef>({
 const ProfileSchema = new mongoose.Schema<IProfile>({
   name:   { type: String, required: true },
   avatar: { type: String, required: true },
+  title:{type: String},
   slogan: { type: String },
   bio:    { type: String },
 

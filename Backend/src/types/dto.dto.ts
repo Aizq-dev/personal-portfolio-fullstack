@@ -22,6 +22,7 @@ export type CreateProfileDTO = {
     _id:string;
     name: string;
   avatar: string;
+  title?: string;
   sloga?:string; 
   bio?: string;
   github?: string;

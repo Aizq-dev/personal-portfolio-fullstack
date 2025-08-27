@@ -7,7 +7,9 @@ export interface IProyect extends Document{
     img: string;
     gif?: string;
     description: string;
-    tech?: string[]
+    tech?: string[];
+    githubUrl?: String;
+    demoUrl?: String;
 }
 // Interfaz formulario contacto
 export interface IContact extends Document{
@@ -39,6 +41,7 @@ export interface IFileRef {
 export interface IProfile extends Document {
   name: string;
   avatar: string;
+  title?: string;
   slogan?: string;      
   bio?: string;
 

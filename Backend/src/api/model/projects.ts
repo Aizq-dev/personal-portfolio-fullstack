@@ -6,7 +6,10 @@ const projectSchema = new mongoose.Schema<IProyect>({
     img: {type: String, required: true},
     gif:{type: String , required: false},
     description: {type: String, required: true},
-    tech: {type: [String], required: false}
+    tech: {type: [String], required: false},
+    githubUrl: {type: String, required: false},
+    demoUrl:  {type: String, required: false}
+
 
 },{
 timestamps:true,
