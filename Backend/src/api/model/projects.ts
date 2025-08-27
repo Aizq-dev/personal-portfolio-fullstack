@@ -1,19 +1,30 @@
 import mongoose from "mongoose";
 import { IProyect } from "../../types/models";
 
-const projectSchema = new mongoose.Schema<IProyect>({
-    title: {type:String, required: true},
-    img: {type: String, required: true},
-    gif:{type: String , required: false},
-    description: {type: String, required: true},
-    tech: {type: [String], required: false},
-    githubUrl: {type: String, required: false},
-    demoUrl:  {type: String, required: false}
+const projectSchema = new mongoose.Schema<IProyect>(
+  {
+    title: { type: String, required: true },
+    img: { type: String },
+    gif: { type: String },
+    description: { type: String, required: true },
+    tech: { type: [String] },
+    githubUrl: { type: String },
+    demoUrl: { type: String },
+    stack: {
+      type: String,
+      enum: ["frontend", "backend", "fullstack"],
+      required: true,
+    },
+    origin: {
+      type: String,
+      enum: ["bootcamp", "personal", "profesional"],
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+    collection: "projects",
+  }
+);
 
-
-},{
-timestamps:true,
-collection: "projects",}
-)
-
-export const Project = mongoose.model<IProyect>("Project",projectSchema)
+export const Project = mongoose.model<IProyect>("Project", projectSchema);

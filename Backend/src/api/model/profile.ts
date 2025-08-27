@@ -21,7 +21,7 @@ const ProfileSchema = new mongoose.Schema<IProfile>({
   links: {
     github:   { type: String },
     linkedin: { type: String },
-    other:    [{ label: String, url: String }]
+     other: [{ label: { type: String }, url: { type: String } }]
   },
 
   contact: {
@@ -31,7 +31,7 @@ const ProfileSchema = new mongoose.Schema<IProfile>({
 
   cv: {
     current: FileRefSchema,
-    history: [FileRefSchema]
+    history: [FileRefSchema] 
   }
 },{
   timestamps: true,

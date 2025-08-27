@@ -2,7 +2,7 @@ import { setError } from "../../config/error";
 import { generateSign } from "../../config/jwt";
 import { RegisterUserDTO } from "../../types/dto.dto";
 import { AsyncResponseServer } from "../../types/express";
-import { IUser } from "../../types/models";
+import { IUserDoc } from "../../types/models";
 import { User } from "../model/user";
 import bcrypt from "bcrypt"
 
@@ -15,7 +15,7 @@ export const register : AsyncResponseServer <{},RegisterUserDTO>= async(req,res,
              return next(setError(400,"This user already exist"));
         }
 
-        const userBBDD : IUser= await newUser.save()
+        const userBBDD : IUserDoc= await newUser.save()
 
         if(!userBBDD){
             return next(setError(400,"Can't create user "));

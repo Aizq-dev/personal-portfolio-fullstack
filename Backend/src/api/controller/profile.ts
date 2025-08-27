@@ -1,7 +1,7 @@
 import { setError } from "../../config/error";
 import { CreateProfileDTO, UpdateProfileDTO } from "../../types/dto.dto";
 import { AsyncResponseServer } from "../../types/express";
-import { IProfile } from "../../types/models";
+import { IProfileDoc } from "../../types/models";
 import { Profile } from "../model/profile";
 
 
@@ -9,7 +9,7 @@ import { Profile } from "../model/profile";
 
 export const getProfile : AsyncResponseServer = async(req,res,next)=>{
     try {
-        const profile : IProfile[] = await Profile.find();
+        const profile : IProfileDoc[] = await Profile.find();
          res.status(200).json(profile)
         
     } catch (error) {
@@ -22,7 +22,7 @@ export const getProfile : AsyncResponseServer = async(req,res,next)=>{
 export const createProfile : AsyncResponseServer <{},CreateProfileDTO>= async(req,res,next)=>{
     try {
         const newProfile = new Profile(req.body);
-        const profileBBDD: IProfile= await newProfile.save();
+        const profileBBDD: IProfileDoc= await newProfile.save();
         if(!profileBBDD){
             return next(setError(400,"Can't create Profile "));}
          res.status(201).json(profileBBDD)
@@ -67,3 +67,4 @@ export const updateProfile: AsyncResponseServer<{ id: string }, UpdateProfileDTO
       return next(setError(400, "Can't update Profile 😢"));
     }
 };
+
