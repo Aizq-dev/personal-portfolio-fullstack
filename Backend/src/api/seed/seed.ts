@@ -1,6 +1,6 @@
 import { SeedData } from "../../types/models";
 export const seed: SeedData = {
-  profiles: [
+  profile: [
     {
       name: "Adrián Izquierdo ",
       avatar:
@@ -15,8 +15,7 @@ export const seed: SeedData = {
       contact: {
         email: "adrizq.dev@gmail.com",
         phone: "+34 663563045",
-      }},
-  ],
+      }}],
 
   projects: [
     //primero frontend

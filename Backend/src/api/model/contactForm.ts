@@ -10,7 +10,7 @@ const contactSchema = new mongoose.Schema<IContact>({
 
 },{
 timestamps:true,
-collection: "contacts",}
+collection: "Contacts",}
 )
 
-export const Contact = mongoose.model<IContact>("contacts",contactSchema)
+export const Contact = mongoose.model<IContact>("Contacts",contactSchema)

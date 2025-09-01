@@ -68,6 +68,6 @@ export interface IProfileDoc extends IProfile, Document{}
 
  //interfaz Seed
  export interface SeedData {
-  profiles: IProfile[];
+  profile: IProfile[];
   projects: IProject[];
 }

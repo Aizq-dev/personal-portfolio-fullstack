@@ -23,8 +23,8 @@ const projectSchema = new mongoose.Schema<IProyect>(
   },
   {
     timestamps: true,
-    collection: "projects",
+    collection: "Projects",
   }
 );
 
-export const Project = mongoose.model<IProyect>("Project", projectSchema);
+export const Project = mongoose.model<IProyect>("Projects", projectSchema);

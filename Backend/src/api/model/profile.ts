@@ -35,7 +35,7 @@ const ProfileSchema = new mongoose.Schema<IProfile>({
   }
 },{
   timestamps: true,
-  collection: 'profiles'
+  collection: 'Profile'
 });
 
-export const Profile = mongoose.model<IProfile>("profiles",ProfileSchema)
+export const Profile = mongoose.model<IProfile>("Profile",ProfileSchema)
