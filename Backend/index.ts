@@ -1,35 +1,50 @@
-import express from "express"
-import  {connectDB} from "./src/config/db"
-import dotenv from "dotenv"
-import { setError } from "./src/config/error";
-import { ErrorHandler, ResponseServer } from "./src/types/express";
+// src/index.ts
+import "dotenv/config";
+import express, { RequestHandler, ErrorRequestHandler } from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import morgan from "morgan";
+import { connectDB } from "./src/config/db";
 import { indexRouter } from "./src/api/routes/indexRouter";
+import { setError } from "./src/config/error";
 
-dotenv.config();
-const server = express();
+const app = express();
 
-connectDB();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(morgan("dev"));
 
-server.use(express.json());
-server.use(express.urlencoded({ extended: true }));
+// Rutas de salud primero
+const rootHandler: RequestHandler = (_req, res) => { res.send("OK"); };
+const healthHandler: RequestHandler = (_req, res) => {
+  res.json({ mongo: mongoose.connection.readyState }); // 1 = connected
+};
+app.get("/", rootHandler);
+app.get("/health", healthHandler);
 
-// Rutas
-server.use("/api/v1/",indexRouter)
-
-//const serverWork: ResponseServer = (req,res,next)=>{return res.status(200).json("Esto funciona perfecto")}
-const notFound : ResponseServer = (  req,res,next)=>{ return  next(setError(404, "no tengo nada que ofrecerte"))}
-const error :ErrorHandler =( error, req,res,next)=>{ return  res.status(error.status || 500).json(error.message || "Internal server error")}
+// rutas de API
+app.use("/api/v1", indexRouter);
 
 
+const notFound: RequestHandler = (_req, _res, next) => next(setError(404, "no tengo nada que ofrecerte"));
+app.use(notFound);
 
-server.use("/", notFound)
-server.use(error)
+// Middleware de error (4 args)
+const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
+  res.status((err as any).status || 500).json((err as any).message || "Internal server error");
+};
+app.use(errorHandler);
 
-//Inicio server
+// Puerto
+const PORT = Number.parseInt(process.env.PORT ?? "3000", 10);
 
-const raw = process.env.PORT ?? "3000";
-const PORT: number = Number.parseInt(raw, 10);
-const SAFE_PORT = Number.isNaN(PORT) ? 3000 : PORT;
-server.listen(SAFE_PORT, "0.0.0.0", () => {
-  console.log(`Servidor en http://localhost:${SAFE_PORT}`);
-});
+// Arranque
+async function start() {
+  await connectDB(); // conecta a Mongo
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server on http://localhost:${PORT}`);
+  });
+}
+
+start();
