@@ -1,11 +1,11 @@
 {
   "name": "proyecto-portfolio-web",
   "version": "1.0.0",
-  "main": "dist/index.ts",
-  "engines":{"node": ">=20"},
+  "main": "dist/index.js",
+  "engines":{"node": "20.x"},
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.ts",
+    "start": "node dist/index.js",
     "dev": "nodemon index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "ts-node src/api/functions/seedToBBDD.ts",

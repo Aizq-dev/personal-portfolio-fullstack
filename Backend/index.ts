@@ -26,6 +26,10 @@ server.use("/", notFound)
 server.use(error)
 
 //Inicio server
-server.listen(3000, ()=>{
-    console.log("Estoy escuchando en: http://localhost:3000")
-})
+
+const raw = process.env.PORT ?? "3000";
+const PORT: number = Number.parseInt(raw, 10);
+const SAFE_PORT = Number.isNaN(PORT) ? 3000 : PORT;
+server.listen(SAFE_PORT, "0.0.0.0", () => {
+  console.log(`Servidor en http://localhost:${SAFE_PORT}`);
+});
