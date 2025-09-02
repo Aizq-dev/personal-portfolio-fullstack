@@ -26,10 +26,20 @@ const ALLOWED_ORIGINS = ["http://localhost:5173"];
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );*/
-app.use(cors({origin: "*"}));
-app.options("*", cors());
+app.use(cors({
+  origin: (origin, callback)=>{
+    callback(null,true)
+  }}))
+
+  app.use((req,res,next)=>{
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+ 
+  next()
+
+})
   
 app.use(morgan("dev"));
+
 
 // Rutas de salud primero
 const rootHandler: RequestHandler = (_req, res) => {
