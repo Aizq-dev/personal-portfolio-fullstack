@@ -1,12 +1,15 @@
 {
   "name": "proyecto-portfolio-web",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.ts",
+  "engines":{"node": ">=20"},
   "scripts": {
-    "start": "node index.ts",
+    "build": "tsc",
+    "start": "node dist/index.ts",
     "dev": "nodemon index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "ts-node src/api/functions/seedToBBDD.ts"
+    "seed": "ts-node src/api/functions/seedToBBDD.ts",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
