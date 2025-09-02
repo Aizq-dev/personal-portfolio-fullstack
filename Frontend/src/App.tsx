@@ -1,6 +1,8 @@
 import './App.css'
 import { Navbar } from './components/navbar/navbar'
+import { About } from './components/profile/about/about'
 import { Profile } from './components/profile/profile'
+import { Rrss } from './components/profile/rrss/rrss'
 
 function App() {
 
@@ -10,10 +12,12 @@ function App() {
       <div className='side_left'>
         <Profile></Profile>
         <Navbar></Navbar>
-        <div className='rrss'></div>
+        <Rrss></Rrss>
       </div>
+      
       <div className='side_rigth'>
-        <div id="experience"className='workExperience'></div>
+        <About></About>
+               <div id="experience"className='workExperience'></div>
         <div id='projects' className='projects'></div>
       </div>
     </main>

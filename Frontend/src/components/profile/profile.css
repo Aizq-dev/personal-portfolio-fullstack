@@ -1,0 +1,19 @@
+.profile{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.avatar_name{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: left;
+    margin-left: 15px;
+}
+.avatar{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+}

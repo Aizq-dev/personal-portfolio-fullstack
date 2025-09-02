@@ -3,8 +3,10 @@ import "./navbar.css"
 
 export const Navbar= ()=>{
 return (
-    <div>
-    <p>Hola mundo jeje</p>
+    <div className="navbar">
+    <p>Bio</p>
+    <p>Experiencia</p>
+    <p>Proyectos</p>
     </div>
     
 )}
