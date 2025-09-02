@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const ALLOWED_ORIGINS = ["http://localhost:5173"];
 
-app.use(
+/*app.use(
   cors({
     origin(origin, callback) {
       if (!origin || ALLOWED_ORIGINS.includes(origin)) {
@@ -25,7 +25,8 @@ app.use(
     }, methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
-);
+);*/
+app.use(cors({origin: "*"}));
 app.options("*", cors());
   
 app.use(morgan("dev"));
