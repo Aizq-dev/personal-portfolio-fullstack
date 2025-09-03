@@ -30,11 +30,24 @@ export interface IProfile {
 export interface IProject {
   _id: string;
   title: string;
+  img?: string;
+  gif?: string;
   description: string;
-  image?: string;
-  repoUrl?: string;
+  tech: string[];  
+  githubUrl?: string;
   demoUrl?: string;
-  tags?: string[];
+  stack?: string;
+  origin: string;
+  __v?: number
   createdAt?: string;
   updatedAt?: string;
 }
+
+// Api data
+export type AppData = {
+  profile: IProfile | null;
+  projects: IProject[] | null;
+  loading: boolean;
+  error: string | null;
+  refresh: () => Promise<void>;  // por si quiero volver a pedir
+};

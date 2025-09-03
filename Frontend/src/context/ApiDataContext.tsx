@@ -1,14 +1,8 @@
 import { createContext, useEffect, useMemo, useState } from "react";
-import type { IProfile, IProject } from "../types/types";
+import type { AppData,IProfile,IProject } from "../types/types";
 import { fetchData } from "../utils/fetchapi";
 
-type AppData = {
-  profile: IProfile | null;
-  projects: IProject[] | null;
-  loading: boolean;
-  error: string | null;
-  refresh: () => Promise<void>;  // por si quiero volver a pedir
-};
+
 
 export const AppDataContext= createContext<AppData |null>(null);
 export const AppDataProvider = ({children}: {children: React.ReactNode})=>{
@@ -44,8 +38,8 @@ export const AppDataProvider = ({children}: {children: React.ReactNode})=>{
         projects:projectsState,
         loading,error, refresh: load
     }),[profileState,projectsState,loading,error])
-    console.log(profileState)
-            console.log(projectsState)
+            //console.log(profileState)
+            //console.log(projectsState)
     return <AppDataContext.Provider value={value}>{children}</AppDataContext.Provider>
 }
 

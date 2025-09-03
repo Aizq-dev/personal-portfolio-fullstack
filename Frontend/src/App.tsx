@@ -1,6 +1,7 @@
 import './App.css'
-import { Navbar } from './components/navbar/navbar'
-import { About } from './components/profile/about/about'
+import { ExperienceWork } from './components/sideRight/experience/experience'
+import { Navbar } from './components/sideLeft/navbar/navbar'
+import { About } from './components/sideRight/about/about'
 import { Profile } from './components/profile/profile'
 import { Rrss } from './components/profile/rrss/rrss'
 
@@ -17,7 +18,7 @@ function App() {
       
       <div className='side_rigth'>
         <About></About>
-               <div id="experience"className='workExperience'></div>
+        <ExperienceWork></ExperienceWork>
         <div id='projects' className='projects'></div>
       </div>
     </main>

@@ -207,7 +207,7 @@ export const seed: SeedData = {
       githubUrl: "",
       demoUrl: "https://izbzridkik.myfunnelish.com/landing-page",
       stack: "frontend",
-      origin: "profesional",
+      origin: "professional",
     },
   ],
 
