@@ -19,16 +19,12 @@ const ProfileSchema = new mongoose.Schema<IProfile>({
   bio:    { type: String },
 
   links: {
-    github:   { type: String },
-    linkedin: { type: String },
-     other: [{ label: { type: String }, url: { type: String } }]
+    github:   { url: {type:String},svg:{type:String} },
+    linkedin:  { url: {type:String},svg:{type:String} },
+    gmail:  { email: {type:String},svg:{type:String} }
   },
 
-  contact: {
-    email: { type: String },
-    phone: { type: String }
-  },
-
+  
   cv: {
     current: FileRefSchema,
     history: [FileRefSchema] 

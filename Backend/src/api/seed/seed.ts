@@ -9,13 +9,19 @@ export const seed: SeedData = {
       slogan: "Evolucionando cada día. Aprendiendo, creando, mejorando.",
       bio: "Soy desarrollador Full Stack con formación técnica en electricidad industrial y experiencia previa en entornos donde la precisión, la lógica y la responsabilidad son clave. En los últimos años he volcado ese enfoque en el desarrollo web, aprendiendo a crear soluciones funcionales con tecnologías como JavaScript, TypeScript, React y Node.js. Me gusta construir cosas que funcionen bien, entender cómo mejorar cada día y seguir creciendo en el mundo del desarrollo.",
       links: {
-        github: "https://github.com/Aizq-dev",
-        linkedin: "https://linkedin.com/in/adrian-izquierdo-delgado",
+        github: {
+          url: "https://github.com/Aizq-dev",
+          svg: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1757006584/github.svg.svg"
+        },
+        linkedin: {
+          url: "https://linkedin.com/in/adrian-izquierdo-delgado",
+          svg: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1757006584/linkedin.svg.svg"
+        },
+        gmail: { email: "adrizq.dev@gmail.com", svg:"https://res.cloudinary.com/ddumhsyl6/image/upload/v1757007360/email.svg"}
       },
-      contact: {
-        email: "adrizq.dev@gmail.com",
-        phone: "+34 663563045",
-      }}],
+  
+    },
+  ],
 
   projects: [
     //primero frontend
@@ -194,8 +200,8 @@ export const seed: SeedData = {
       title: "Funnel de ventas personalizado en Funnelish",
       description:
         "Creación de un embudo de ventas completo en Funnelish, tomando como base la página de producto del cliente y transformándola en una landing page personalizada. Como segundo paso, se desarrolló un checkout totalmente customizado, integrando selectores de variantes creados con HTML y CSS propios, los cuales interactúan con el sistema nativo de Funnelish (oculto para mantener el diseño). Se añadió una página de agradecimiento coherente con el funnel y se tradujo todo el contenido al neerlandés. La maquetación se adaptó cuidadosamente a cada dispositivo para asegurar un diseño responsive funcional y atractivo tanto en móvil como en escritorio.",
-      img: "",
-      gif: "",
+      img: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1756898250/funelish_chekout_img.png",
+      gif: "https://player.cloudinary.com/embed/?cloud_name=ddumhsyl6&public_id=funnelis_landingpage_gif&profile=cld-looping",
       tech: [
         "HTML",
         "CSS",
@@ -210,6 +216,4 @@ export const seed: SeedData = {
       origin: "professional",
     },
   ],
-
-
 };

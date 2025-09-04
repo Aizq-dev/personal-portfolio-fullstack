@@ -50,14 +50,9 @@ export interface IProfile {
   bio?: string;
 
   links?: {
-    github?: string;
-    linkedin?: string;
-    other?: Array<{ label: string; url: string }>; // flexibles extra
-  };
-
-  contact?: {
-    email?: string;
-    phone?: string;
+    github?: {url: string, svg:string}
+    linkedin?: {url: string, svg:string}
+    gmail?: {email: string, svg:string}
   };
 
   cv?: {

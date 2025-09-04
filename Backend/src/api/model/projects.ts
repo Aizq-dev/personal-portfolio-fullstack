@@ -17,7 +17,7 @@ const projectSchema = new mongoose.Schema<IProyect>(
     },
     origin: {
       type: String,
-      enum: ["bootcamp", "personal", "profesional"],
+      enum: ["bootcamp", "personal", "professional"],
       required: true,
     },
   },
