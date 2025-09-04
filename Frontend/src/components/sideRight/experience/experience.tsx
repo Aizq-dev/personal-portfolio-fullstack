@@ -1,49 +1,50 @@
-import type { IProject } from "../../../types/types";
+
 import { useAppData } from "../../../utils/functions"
-import "./experience.css"
+import { ProjectCard } from "../projectCard/projectCard";
+//import "./experience.css"
 
 export const ExperienceWork =()=>{
     const {projects}= useAppData();
 
     const professionalProject = projects?.filter(p =>p.origin =="professional" )
-    console.log(professionalProject)
     
-    const frontendPj = professionalProject?.filter(p => p.stack === "frontend")
-    const backendPj = professionalProject?.filter(p => p.stack === "backend")
-    const fullstackPj = professionalProject?.filter(p => p.stack === "fullstack")
-    const card =(p: IProject)=>{
-        return 
-        <li key={p._id}>
-            <div className="cardImg">
-                <img src={`${p.img}`} />
-            </div>
-            <div></div>
-        </li>
-    }
+    
+    const frontendPj = (professionalProject ?? []).filter(p => p.stack === "frontend")
+    const backendPj = (professionalProject ?? []).filter(p => p.stack === "backend")
+    const fullstackPj = (professionalProject ?? []).filter(p => p.stack === "fullstack")
+console.log(professionalProject)
 
     return (
         <div className="WorkXP">
-            {fullstackPj && <section>
-                <h1>Fullstack</h1>
+            <h1>Experienca Laboral/Freelance</h1>
+            {fullstackPj?.length > 0 && <section>
+                <h2>Fullstack</h2>
                 <ul>
-                {fullstackPj.map(p=> card(p)
+                {fullstackPj.map(p=>
+                    <ProjectCard key={p._id} project={p}/>
                 )}
-
                 </ul>
                 </section>}
-            {frontendPj &&
+            {frontendPj?.length >0  &&
             <section>
-            <h1>Frontend</h1>
+            <h2>Frontend</h2>
             <ul>
                 {frontendPj.map(p=>(
-                    <li key={p._id}>
-                        <h3>p.title</h3>
-                    </li>
+                     <ProjectCard key={p._id} project={p}/>
                 ))}
 
                 </ul>
                 </section>}
-            {backendPj && <></>}
+            {backendPj?.length >0  &&
+            <section>
+            <h2>Frontend</h2>
+            <ul>
+                {frontendPj.map(p=>(
+                     <ProjectCard key={p._id} project={p}/>
+                ))}
+
+                </ul>
+                </section>}
             
         </div>
     )

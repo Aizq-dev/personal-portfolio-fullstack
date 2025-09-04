@@ -51,3 +51,11 @@ export type AppData = {
   error: string | null;
   refresh: () => Promise<void>;  // por si quiero volver a pedir
 };
+
+//CursosHightlight
+export type Props = {
+  size?: number;              // diámetro del halo
+  color?: string;             // rgba/oklch del halo
+  target?: HTMLElement | null; // contenedor: si null, usa window
+  className?: string;         // por si quieres pasar clases extra (hidden md:block, etc.)
+};

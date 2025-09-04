@@ -1,6 +1,6 @@
 
-import { useAppData } from "../../utils/functions"
-import "./profile.css" 
+import { useAppData } from "../../../utils/functions"
+//import "./profile.css" 
 
 
 
@@ -15,9 +15,9 @@ if(loading)return <p>cargando</p>
 if(!profile)return <p>sin datos</p>
 
 return (
-    <div className="profile">
+    <div className="flex items-center gap-5">
         {profile?(<>
-        <img src={`${profile.avatar}`} className="avatar"/>
+        <img src={`${profile.avatar}`} className="w-36 rounded-full"/>
         
         <div className="avatar_name">
         <h1>{profile.name}</h1>
