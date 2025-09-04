@@ -19,9 +19,9 @@ const ProfileSchema = new mongoose.Schema<IProfile>({
   bio:    { type: String },
 
   links: {
-    github:   { url: {type:String},svg:{type:String} },
-    linkedin:  { url: {type:String},svg:{type:String} },
-    gmail:  { email: {type:String},svg:{type:String} }
+    github:   { url: {type:String},icon:{type:String} },
+    linkedin:  { url: {type:String},icon:{type:String} },
+    gmail:  { email: {type:String},icon:{type:String} }
   },
 
   

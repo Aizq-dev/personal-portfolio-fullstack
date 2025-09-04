@@ -50,9 +50,9 @@ export interface IProfile {
   bio?: string;
 
   links?: {
-    github?: {url: string, svg:string}
-    linkedin?: {url: string, svg:string}
-    gmail?: {email: string, svg:string}
+    github?: {url: string, icon:string}
+    linkedin?: {url: string, icon:string}
+    gmail?: {email: string, icon:string}
   };
 
   cv?: {

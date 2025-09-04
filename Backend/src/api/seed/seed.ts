@@ -11,15 +11,14 @@ export const seed: SeedData = {
       links: {
         github: {
           url: "https://github.com/Aizq-dev",
-          svg: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1757006584/github.svg.svg"
+          icon: "github",
         },
         linkedin: {
           url: "https://linkedin.com/in/adrian-izquierdo-delgado",
-          svg: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1757006584/linkedin.svg.svg"
+          icon: "linkedin",
         },
-        gmail: { email: "adrizq.dev@gmail.com", svg:"https://res.cloudinary.com/ddumhsyl6/image/upload/v1757007360/email.svg"}
+        gmail: { email: "adrizq.dev@gmail.com", icon: "gmail" },
       },
-  
     },
   ],
 
