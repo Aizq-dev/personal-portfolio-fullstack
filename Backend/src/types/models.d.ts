@@ -23,6 +23,7 @@ export interface IContact extends Document {
   phone?: string;
   email: string;
   message: string;
+  website?: string;
 }
 //Interfaz usuario
 export interface IUser extends Document {

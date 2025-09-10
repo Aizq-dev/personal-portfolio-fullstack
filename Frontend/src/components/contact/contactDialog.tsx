@@ -1,5 +1,6 @@
 // ContactDialog.tsx
-import { useEffect, useRef, FormEvent } from "react";
+import { useEffect, useRef } from "react";
+import type {  FormEvent } from "react";
 import { Dialog } from "../dialog/Dialog";
 import type { ContactFormValues } from "../../types/types";
 import { Input } from "../ui/Input";

@@ -15,7 +15,8 @@ export type CreateContactDTO ={
     company: string;
     phone: string;
     email:string;
-    message: string
+    message: string;
+    website?:string,
 }
 
 export type CreateProfileDTO = {

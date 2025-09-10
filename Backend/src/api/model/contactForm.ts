@@ -6,7 +6,8 @@ const contactSchema = new mongoose.Schema<IContact>({
     company: {type: String, required: true},
     phone:{type: String },
     email: {type: String, required: true},
-    message: {type: String, required: true}
+    message: {type: String, required: true},
+    website:{type:String}
 
 },{
 timestamps:true,
