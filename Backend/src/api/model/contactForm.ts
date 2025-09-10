@@ -3,7 +3,7 @@ import { IContact } from "../../types/models";
 
 const contactSchema = new mongoose.Schema<IContact>({
     name: {type:String, required: true},
-    company: {type: String, required: true},
+    company: {type: String},
     phone:{type: String },
     email: {type: String, required: true},
     message: {type: String, required: true},

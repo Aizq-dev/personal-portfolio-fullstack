@@ -19,7 +19,7 @@ export interface IProyect extends Document {
 export interface IContact extends Document {
   _id?: string;
   name: string;
-  company: string;
+  company?: string;
   phone?: string;
   email: string;
   message: string;

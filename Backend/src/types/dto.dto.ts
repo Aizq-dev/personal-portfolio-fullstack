@@ -12,8 +12,8 @@ export type UpdateProjectDTO = Partial<CreateProjectDTO>;
 export type CreateContactDTO ={
       _id:string;
     name: string;
-    company: string;
-    phone: string;
+    company?: string;
+    phone?: string;
     email:string;
     message: string;
     website?:string,
