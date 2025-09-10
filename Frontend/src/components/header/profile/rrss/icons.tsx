@@ -51,4 +51,5 @@ export const Icons = {
       />
     </svg>
   ),
-};
+} as const;
+

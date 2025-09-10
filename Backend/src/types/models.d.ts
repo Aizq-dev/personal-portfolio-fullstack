@@ -49,11 +49,11 @@ export interface IProfile {
   slogan?: string;
   bio?: string;
 
-  links?: {
-    github?: {url: string, icon:string}
-    linkedin?: {url: string, icon:string}
-    gmail?: {email: string, icon:string}
-  };
+  links?: [
+    {icon:string, url: string, },
+    { icon:string, url: string,},
+    { icon:string ,url: string,}
+  ];
 
   cv?: {
     current?: IFileRef; // versión activa

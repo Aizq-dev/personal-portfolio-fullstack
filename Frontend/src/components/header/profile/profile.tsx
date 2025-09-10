@@ -1,8 +1,4 @@
-
-import { useAppData } from "../../../utils/functions"
-//import "./profile.css" 
-
-
+import { useAppData } from "../../../hooks/useAppData"
 
 
 export const Profile=()=>{

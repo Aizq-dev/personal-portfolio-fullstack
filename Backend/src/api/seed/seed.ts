@@ -8,17 +8,14 @@ export const seed: SeedData = {
       title: "Full Stack Developer",
       slogan: "Evolucionando cada día. Aprendiendo, creando, mejorando.",
       bio: "Soy desarrollador Full Stack con formación técnica en electricidad industrial y experiencia previa en entornos donde la precisión, la lógica y la responsabilidad son clave. En los últimos años he volcado ese enfoque en el desarrollo web, aprendiendo a crear soluciones funcionales con tecnologías como JavaScript, TypeScript, React y Node.js. Me gusta construir cosas que funcionen bien, entender cómo mejorar cada día y seguir creciendo en el mundo del desarrollo.",
-      links: {
-        github: {
-          url: "https://github.com/Aizq-dev",
-          icon: "github",
-        },
-        linkedin: {
-          url: "https://linkedin.com/in/adrian-izquierdo-delgado",
+      links: [
+        { icon: "github", url: "https://github.com/Aizq-dev" },
+        {
           icon: "linkedin",
+          url: "https://linkedin.com/in/adrian-izquierdo-delgado",
         },
-        gmail: { email: "adrizq.dev@gmail.com", icon: "gmail" },
-      },
+        { icon: "gmail", url: "adrizq.dev@gmail.com" },
+      ],
     },
   ],
 
@@ -42,7 +39,7 @@ export const seed: SeedData = {
       description:
         "Página web con listado de productos y funcionalidad de filtrado dinámico por nombre y precio, implementada con JavaScript puro. Este proyecto me permitió incorporar lógica de programación al frontend, trabajar con arrays de objetos y manipular el DOM para actualizar el contenido en tiempo real. También reforzó el diseño responsive y el enfoque en la experiencia de usuario.",
       img: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1756288270/filterlist-img.png",
-      gif: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1756288197/filterlist-gif.gif",
+      gif: "https://res.cloudinary.com/ddumhsyl6/video/upload/v1757328441/filterlist-gif.mp4",
       tech: ["JavaScript", "HTML", "CSS"],
       githubUrl: "https://github.com/Aizq-dev/Proyecto.Frontend.2.web.Dinamica",
       demoUrl: "https://filter-working.netlify.app/",
@@ -54,7 +51,7 @@ export const seed: SeedData = {
       description:
         "Aplicación web que consume la API pública de la NASA para mostrar la imagen del día junto a su descripción. Incluye un selector que permite alternar entre el contenido general de la NASA y las imágenes del rover de Marte. Este proyecto consolidó mis conocimientos en manejo de APIs con fetch, asincronía en JavaScript, y actualización dinámica del DOM. Además, trabajé la presentación visual de datos externos y la mejora de la experiencia de usuario.",
       img: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1756288303/APP-NASA-img.png",
-      gif: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1756288305/APP-NASA-gif.gif",
+      gif: "https://res.cloudinary.com/ddumhsyl6/video/upload/v1757328429/APP-NASA-gif.mp4",
       tech: ["HTML", "CSS", "Javascript", "VITE", "React", "API REST"],
       githubUrl:
         "https://github.com/Aizq-dev/Proyecto.Frontend.Nasa.React.Basic",
@@ -79,9 +76,18 @@ export const seed: SeedData = {
       title: "GameHub - Juegos clásicos con gestión de usuarios",
       description:
         "Aplicación desarrollada con React que permite al usuario jugar a Tic Tac Toe, Ahorcado y Sudoku desde una única interfaz. Todos los juegos han sido programados desde cero, salvo el Sudoku, que se carga como dependencia externa y requiere transformación del tablero para mostrarlo de forma visual, controlar qué celdas son editables y validar errores del jugador en tiempo real. Incluye un sistema de registro e inicio de sesión con almacenamiento local para acceder a un marcador de victorias personalizado. El proyecto refuerza mis habilidades en programación lógica, gestión de estado, navegación condicional y persistencia de datos en frontend.",
-      img: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1756288321/GamesHUb-gif.gif",
-      gif: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1756288319/GamesHUb-img.png",
-      tech: ["HTML", "CSS"],
+      img: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1756288319/GamesHUb-img.png",
+      gif: "https://res.cloudinary.com/ddumhsyl6/video/upload/v1757328781/GamesHUb-gif.mp4",
+      tech: [
+        "React",
+        "React DOM",
+        "React Router DOM",
+        "Reactstrap",
+        "Sudoku (lib npm)",
+        "Vite",
+        "ESLint",
+        "CSS",
+      ],
       githubUrl:
         "https://github.com/Aizq-dev/Proyecto.Frontend.6.GameHub/tree/main",
       demoUrl: "https://gamehubbyadrian.netlify.app/",
@@ -200,7 +206,7 @@ export const seed: SeedData = {
       description:
         "Creación de un embudo de ventas completo en Funnelish, tomando como base la página de producto del cliente y transformándola en una landing page personalizada. Como segundo paso, se desarrolló un checkout totalmente customizado, integrando selectores de variantes creados con HTML y CSS propios, los cuales interactúan con el sistema nativo de Funnelish (oculto para mantener el diseño). Se añadió una página de agradecimiento coherente con el funnel y se tradujo todo el contenido al neerlandés. La maquetación se adaptó cuidadosamente a cada dispositivo para asegurar un diseño responsive funcional y atractivo tanto en móvil como en escritorio.",
       img: "https://res.cloudinary.com/ddumhsyl6/image/upload/v1756898250/funelish_chekout_img.png",
-      gif: "https://player.cloudinary.com/embed/?cloud_name=ddumhsyl6&public_id=funnelis_landingpage_gif&profile=cld-looping",
+      gif: "https://res.cloudinary.com/ddumhsyl6/video/upload/v1756898254/funnelis_landingpage_gif.mp4",
       tech: [
         "HTML",
         "CSS",

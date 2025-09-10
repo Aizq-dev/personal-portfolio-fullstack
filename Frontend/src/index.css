@@ -9,7 +9,7 @@
   h3 { @apply text-xl md:text-2xl font-display font-semibold text-text-light; }
   h4 { @apply text-lg font-semibold text-text-light; }
 
-  p  { @apply mt-4 max-w-xs leading-normal; }
+  p  { @apply mt-4 max-w-lg leading-normal; }
   small { @apply text-sm text-text-muted; }
 
   /* Espaciados verticales por defecto */

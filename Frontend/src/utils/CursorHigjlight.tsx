@@ -52,7 +52,7 @@ export default function CursorHighlight({
       ref={glowRef}
       aria-hidden="true"
       className={
-        "pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 lg:absolute " +
+        "pointer-events-none fixed inset-0 z-30 transition-opacity duration-300  " +
         className
       }
       style={style}
