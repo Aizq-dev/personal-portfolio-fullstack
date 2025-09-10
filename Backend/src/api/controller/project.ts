@@ -1,6 +1,6 @@
 import { setError } from "../../config/error";
 import { AsyncResponseServer } from "../../types/express";
-import { IProyect } from "../../types/models";
+import { IProject } from "../../types/models";
 import {  Project } from "../model/projects"
 import { CreateProjectDTO, UpdateProjectDTO}   from "../../types/dto.dto";
 
@@ -8,7 +8,7 @@ import { CreateProjectDTO, UpdateProjectDTO}   from "../../types/dto.dto";
 
 export const getAllprojects : AsyncResponseServer = async(req,res,next)=>{
     try {
-        const allProjects : IProyect[] = await Project.find();
+        const allProjects : IProject[] = await Project.find();
          res.status(200).json(allProjects)
         
     } catch (error) {
@@ -19,7 +19,7 @@ export const getAllprojects : AsyncResponseServer = async(req,res,next)=>{
 export const getProjectByID : AsyncResponseServer<{id: string}> = async(req,res,next)=>{
     try {
         const {id} = req.params
-        const project : IProyect | null = await Project.findById(id);
+        const project : IProject | null = await Project.findById(id);
         if(!project){
            return next(setError(400,"Project not found 😢"))
         }
@@ -33,7 +33,7 @@ export const getProjectByID : AsyncResponseServer<{id: string}> = async(req,res,
 export const createProject : AsyncResponseServer <{},CreateProjectDTO>= async(req,res,next)=>{
     try {
         const newProject = new Project(req.body);
-        const projectBBDD: IProyect= await newProject.save();
+        const projectBBDD: IProject= await newProject.save();
         if(!projectBBDD){
             return next(setError(400,"Can't create Project "));}
          res.status(201).json(projectBBDD)

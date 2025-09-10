@@ -1,21 +1,32 @@
-import mongoose, { Document } from "mongoose";
+import { Document } from "mongoose";
 
-//Interfaz proyectos
+/* ---------- Common ---------- */
+export type Locale = "es" | "en";
 export type Stack = "frontend" | "backend" | "fullstack";
-export type Origin = "bootcamp" | "personal" | "profesional";
-export interface IProyect extends Document {
+export type Origin = "bootcamp" | "personal" | "professional";
+
+/* ---------- Project ---------- */
+export interface IProject extends Document {
   _id?: string;
+  locale: Locale;           
+
   title: string;
   img?: string;
   gif?: string;
   description: string;
   tech?: string[];
-  githubUrl?: String;
-  demoUrl?: String;
+
+  githubUrl?: string;       
+  demoUrl?: string;         
+
   stack: Stack;
   origin: Origin;
+
+  createdAt?: Date;
+  updatedAt?: Date;
 }
-// Interfaz formulario contacto
+
+/* ---------- Contact ---------- */
 export interface IContact extends Document {
   _id?: string;
   name: string;
@@ -23,47 +34,59 @@ export interface IContact extends Document {
   phone?: string;
   email: string;
   message: string;
-  website?: string;
+  website?: string;         // honeypot
+
+  // metadatos opcionales
+  lang?: Locale;            // idioma seleccionado en el front
+  source?: string;          // p.ej. "rrss-email-icon"
+  status?: "new" | "replied" | "archived";
+
+  createdAt?: Date;
+  updatedAt?: Date;
 }
-//Interfaz usuario
+
+/* ---------- User ---------- */
 export interface IUser extends Document {
   _id?: string;
-  userName: string;
+  userName: string;         // (coincide con tu modelo)
   password: string;
   role?: string;
+
+  createdAt?: Date;
+  updatedAt?: Date;
 }
-export interface IUserDoc extends IUser, Document{}
-// Interfaz Cv
+export interface IUserDoc extends IUser {}
+
+/* ---------- CV / Files ---------- */
 export interface IFileRef {
-  url: string; // URL pública (Cloudinary/S3)
-  publicId?: string; // id interno del storage (p.ej. Cloudinary)
+  url: string;
+  publicId?: string;
   filename?: string;
-  size?: number; // bytes
-  mime?: string; // 'application/pdf'
+  size?: number;            // bytes
+  mime?: string;            // 'application/pdf'
   uploadedAt?: Date;
 }
-// Interfaz perfil
+
+/* ---------- Profile ---------- */
 export interface IProfile {
+  locale: Locale;           // i18n
   name: string;
   avatar: string;
   title?: string;
   slogan?: string;
   bio?: string;
-
-  links?: [
-    {icon:string, url: string, },
-    { icon:string, url: string,},
-    { icon:string ,url: string,}
-  ];
-
+  links: { icon: string; url: string }[];
   cv?: {
-    current?: IFileRef; // versión activa
-    history?: IFileRef[]; // versiones anteriores (opcional)
-  }};
-export interface IProfileDoc extends IProfile, Document{}
+    current?: IFileRef;
+    history: IFileRef[];
+  };
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export interface IProfileDoc extends IProfile, Document {}
 
- //interfaz Seed
- export interface SeedData {
-  profile: IProfile[];
-  projects: IProject[];
+/* ---------- Seed ---------- */
+export interface SeedData {
+  profile: CreateProfileDTO[];
+  projects: CreateProjectDTO[];
 }

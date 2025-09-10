@@ -1,4 +1,5 @@
 import {Request, Response, NextFunction} from "express"
+import { IUser } from "./models";
 
 
 export type ResponseServer =(req:Request,res: Response,next: NextFunction)=>void

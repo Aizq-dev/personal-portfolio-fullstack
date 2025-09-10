@@ -1,8 +1,10 @@
-import mongoose from "mongoose";
-import { IProyect } from "../../types/models";
+import mongoose, { Schema } from "mongoose";
+import { IProject } from "../../types/models";
 
-const projectSchema = new mongoose.Schema<IProyect>(
+const projectSchema = new Schema<IProject>(
   {
+  
+    locale: { type: String, enum: ["es", "en"], required: true, index: true },
     title: { type: String, required: true },
     img: { type: String },
     gif: { type: String },
@@ -10,16 +12,8 @@ const projectSchema = new mongoose.Schema<IProyect>(
     tech: { type: [String] },
     githubUrl: { type: String },
     demoUrl: { type: String },
-    stack: {
-      type: String,
-      enum: ["frontend", "backend", "fullstack"],
-      required: true,
-    },
-    origin: {
-      type: String,
-      enum: ["bootcamp", "personal", "professional"],
-      required: true,
-    },
+    stack: { type: String, enum: ["frontend", "backend", "fullstack"], required: true },
+    origin: { type: String, enum: ["bootcamp", "personal", "professional"], required: true },
   },
   {
     timestamps: true,
@@ -27,4 +21,4 @@ const projectSchema = new mongoose.Schema<IProyect>(
   }
 );
 
-export const Project = mongoose.model<IProyect>("Projects", projectSchema);
+export const Project = mongoose.model<IProject>("Projects", projectSchema);
