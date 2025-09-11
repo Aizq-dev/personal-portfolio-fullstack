@@ -37,8 +37,8 @@ export interface IContact extends Document {
   website?: string;         // honeypot
 
   // metadatos opcionales
-  lang?: Locale;            // idioma seleccionado en el front
-  source?: string;          // p.ej. "rrss-email-icon"
+  lang?: Locale;            
+  source?: string;         
   status?: "new" | "replied" | "archived";
 
   createdAt?: Date;
@@ -48,8 +48,7 @@ export interface IContact extends Document {
 /* ---------- User ---------- */
 export interface IUser extends Document {
   _id?: string;
-  userName: string;         // (coincide con tu modelo)
-  password: string;
+  userName: string;         
   role?: string;
 
   createdAt?: Date;
