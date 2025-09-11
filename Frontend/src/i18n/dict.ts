@@ -15,13 +15,14 @@ export const DICT = {
     // Acciones
     action_view_repo: "Ver Repositorio",
     action_live_demo: "Live Demo",
+    dowload_cv: "Descargar CV",
 
     // Switch idioma
     lang_switch_to_en: "Switch to English",
     lang_switch_to_es: "Cambiar a Español",
 
     // Form contacto
-    
+
     contact_title: "Contactar",
     contact_subtitle: "Rellena el formulario y te responderé lo antes posible.",
     form_name: "Nombre",
@@ -64,6 +65,7 @@ export const DICT = {
 
     action_view_repo: "View Repository",
     action_live_demo: "Live Demo",
+    dowload_cv: "Download CV",
 
     lang_switch_to_en: "Switch to English",
     lang_switch_to_es: "Switch to Spanish",

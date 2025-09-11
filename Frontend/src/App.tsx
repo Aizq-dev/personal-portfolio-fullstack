@@ -7,6 +7,7 @@ import CursorHighlight from './components/cursorHightlight/CursorHightlight'
 import {  AllProjects } from './components/main/projects/AllProjects'
 import { Loader } from './components/loader/loaded'
 import { LangSwitch } from './components/header/LangSwitch/LangSwitch'
+import { ButtonCV } from './components/header/cvButton/cvButton'
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Profile></Profile>
         <div >
         <LangSwitch/>
+        <ButtonCV/>
         </div>
         <Navbar></Navbar>
         
