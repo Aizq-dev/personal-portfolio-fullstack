@@ -11,7 +11,7 @@ export function LangSwitch() {
     <button
       onClick={() => setLang(next)}
       disabled={loading}
-      className="ml-3 rounded-xl border border-teal-500/40 px-3 py-1 text-sm disabled:opacity-60"
+      className="rounded-xl mt-6 border border-teal-500/40 px-3 py-1 text-sm disabled:opacity-60"
       title={lang === "es" ? "Switch to English" : "Cambiar a Español"}
     >
       {lang === "es" ? "Switch to English" : "Cambiar a Español"}

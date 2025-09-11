@@ -36,7 +36,7 @@ export function ProjectCard({ project }: { project: IProject }) {
           ))}
         </ul>
 
-        <div>
+        <div >
           <a
             href={project.githubUrl}
             target="_blank"
@@ -56,7 +56,7 @@ export function ProjectCard({ project }: { project: IProject }) {
         </div>
       </div>
 
-      <div className="z-10 sm:order-1 sm:col-span-2 ">
+      <div className="z-10 sm:order-1 max-sm:pt-4 md:pt-1.5 sm:col-span-2 ">
         {project.img &&
           (hover ? (
             <video

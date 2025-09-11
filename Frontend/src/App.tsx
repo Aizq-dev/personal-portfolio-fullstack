@@ -25,8 +25,11 @@ function App() {
     <header className='lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24'>
       <div>
         <Profile></Profile>
-        <Navbar></Navbar>
+        <div >
         <LangSwitch/>
+        </div>
+        <Navbar></Navbar>
+        
         </div>
         <Rrss></Rrss>
     </header>
