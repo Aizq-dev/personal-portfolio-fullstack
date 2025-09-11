@@ -78,8 +78,7 @@ export const Rrss = () => {
       <ContactDialog
         open={contactOpen}
         onClose={() => setContactOpen(false)}
-        onSubmit={handleSubmit} // solo el padre hace el POST
-        title="Contactar"
+        onSubmit={handleSubmit} 
       />
     </>
   );
