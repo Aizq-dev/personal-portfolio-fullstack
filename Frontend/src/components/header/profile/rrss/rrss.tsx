@@ -4,7 +4,7 @@ import { Icons } from "./icons";
 import type { RrssItem, ContactFormValues } from "../../../../types/types";
 import { useAppData } from "../../../../hooks/useAppData";
 import { ContactDialog } from "../../../contact/contactDialog";
-import { sendContact } from "../../../contact/contact.api";
+import { sendContact } from "../../../../api/contact.api";
 
 export const Rrss = () => {
   const { profile } = useAppData();

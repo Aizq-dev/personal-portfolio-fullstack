@@ -1,8 +1,13 @@
 //import "./projectCard.css"
 import { useState } from "react";
 import type { IProject } from "../../../types/types";
+import { useI18n } from "../../../hooks/usei18n";
+
+
 export function ProjectCard({ project }: { project: IProject }) {
   const [hover, setHover] = useState(false);
+  const { t } = useI18n();
+
   return (
     <article
       onMouseEnter={() => setHover(true)}
@@ -21,15 +26,16 @@ export function ProjectCard({ project }: { project: IProject }) {
         </p>
 
         <ul className="mt-2 flex flex-wrap gap-2 mb-4">
-          {project.tech.map((t) => (
+          {(project.tech ?? []).map((tch) => (
             <li
-              key={t}
+              key={tch}
               className="rounded bg-teal-900/60 px-2 py-0.5 text-xs text-teal-300"
             >
-              {t}
+              {tch}
             </li>
           ))}
         </ul>
+
         <div>
           <a
             href={project.githubUrl}
@@ -37,7 +43,7 @@ export function ProjectCard({ project }: { project: IProject }) {
             rel="noopener noreferrer"
             className="inline-flex items-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold text-white transition mr-4 hover:bg-teal-700"
           >
-            Ver Repositorio
+            {t("action_view_repo")}
           </a>
           <a
             href={project.demoUrl}
@@ -45,7 +51,7 @@ export function ProjectCard({ project }: { project: IProject }) {
             rel="noopener noreferrer"
             className="inline-flex items-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-teal-700"
           >
-            Live Demo
+            {t("action_live_demo")}
           </a>
         </div>
       </div>

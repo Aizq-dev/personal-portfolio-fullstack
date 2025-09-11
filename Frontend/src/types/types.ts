@@ -25,6 +25,7 @@ export interface IProfile {
   slogan?: string;
   bio?: string;
   links?: Link;
+  locale: Locale
 
   cv?: { current?: FileRef; history?: FileRef[] };
 }
@@ -42,33 +43,34 @@ export interface IProject {
   demoUrl?: string;
   stack: Stack;
   origin: string;
+  locale:Locale;
   __v?: number
   createdAt?: string;
   updatedAt?: string;
 }
 
 export type SectionByStackProps = {
-  title: string;                    // “Bootcamp”, “Experiencia profesional”, etc.
-  projects: IProject[];              // lista ya filtrada (según origen)
+  title: string;                    
+  projects: IProject[];              
   labels?: Partial<Record<Stack, string>>;
-  id: "workXP" | "PersonalPJ" | "bootcamp" // textos por stack si quiero cambiarlos
+  id: "workXP" | "PersonalPJ" | "bootcamp" 
 };
 
-// Api data
+// App data
+export type Locale = "es" | "en";
 export type AppData = {
   profile: IProfile | null;
   projects: IProject[] | null;
   loading: boolean;
-  error: string | null;
-  refresh: () => Promise<void>;  // por si quiero volver a pedir
-};
-
-//CursosHightlight
+  error?: string | null;
+  refresh?: () => Promise<void>; 
+  lang?: Locale
+}
 export type Props = {
   size?: number;              // diámetro del halo
   color?: string;             // rgba/oklch del halo
   target?: HTMLElement | null; // contenedor: si null, usa window
-  className?: string;         // por si quierp pasar clases extra (hidden md:block, etc.)
+  className?: string;         // por si quiero pasar clases extra (hidden md:block, etc.)
 };
 //Icons
 export type IconKey = keyof typeof Icons;

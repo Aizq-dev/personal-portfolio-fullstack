@@ -1,7 +1,7 @@
 // Page.tsx
 import { useState } from "react";
 import { ContactDialog } from "./contactDialog"; // tu modal
-import { sendContact } from "./contact.api";
+import { sendContact } from "../../api/contact.api";
 
 
 export default function Page() {

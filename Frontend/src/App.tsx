@@ -3,9 +3,10 @@ import { Navbar } from './components/header/navbar/navbar'
 import { About } from './components/main/about/about'
 import { Profile } from './components/header/profile/profile'
 import { Rrss } from './components/header/profile/rrss/rrss'
-import CursorHighlight from './utils/CursorHigjlight'
+import CursorHighlight from './components/cursorHightlight/CursorHightlight'
 import {  AllProjects } from './components/main/projects/AllProjects'
 import { Loader } from './components/loader/loaded'
+import { LangSwitch } from './components/header/LangSwitch/LangSwitch'
 
 
 
@@ -25,14 +26,13 @@ function App() {
       <div>
         <Profile></Profile>
         <Navbar></Navbar>
+        <LangSwitch/>
         </div>
         <Rrss></Rrss>
     </header>
     <main id="content"className='pt-24 lg:w-[52%] lg:py-24'>
         <About ></About>
-        <AllProjects/>
-        <div id='projects' className='projects'></div>
-      
+        <AllProjects/>      
     </main>
     </div>
     </div></section></>

@@ -1,6 +1,6 @@
 // src/utils/CursorHighlight.tsx
 import { useEffect, useRef } from "react";
-import type { Props } from "../types/types";
+import type { Props } from "../../types/types";
 
 
 

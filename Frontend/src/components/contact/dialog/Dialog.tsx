@@ -1,7 +1,8 @@
 // src/components/dialog/Dialog.tsx
 import React, { useEffect, useMemo, useRef } from "react";
 import { createPortal } from "react-dom";
-import { cn } from "../../utils/cn";
+import { cn } from "../../../utils/cn";
+
 
 
 type Props = {
