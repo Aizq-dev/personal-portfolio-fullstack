@@ -10,11 +10,11 @@ This project is currently under development. It will serve as a personal portfol
 
 - [x] Project structure created
 - [x] Database connection configured
-- [x] API routes (in progress)
-- [x] Frontend interface (in progress)
+- [x] API routes 
+- [x] Frontend interface 
 - [x] Project listing page
 - [x] Contact form functionality
-- [x] Deployment (planned)
+- [x] Deployment 
 - [ ] Admin panel (planned)
 ---
 
