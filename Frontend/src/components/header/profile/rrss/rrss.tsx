@@ -1,21 +1,22 @@
 // Rrss.tsx
-import { useState, useCallback } from "react";
+import { useState} from "react";
 import { Icons } from "./icons";
 import type { RrssItem, ContactFormValues } from "../../../../types/types";
 import { useAppData } from "../../../../hooks/useAppData";
 import { ContactDialog } from "../../../contact/contactDialog";
 import { sendContact } from "../../../../api/contact.api";
+import { useI18n } from "../../../../hooks/usei18n";
 
 export const Rrss = () => {
   const { profile } = useAppData();
   const [contactOpen, setContactOpen] = useState(false);
-
+const {lang}=useI18n()
   const rrss = (profile?.links ?? []) as RrssItem[];
 
-  const handleSubmit = useCallback(async (data: ContactFormValues) => {
-    const ok = await sendContact(data);
+  const handleSubmit = async (data: ContactFormValues, ) => {
+    const ok = await sendContact({...data, lang});
     if (!ok) alert("No se pudo enviar. Inténtalo de nuevo.");
-  }, []);
+  };
 
   return (
     <>

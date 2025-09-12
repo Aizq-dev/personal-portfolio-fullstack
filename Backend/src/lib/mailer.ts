@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { Locale } from "../types/models";
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST!,               // smtp.gmail.com
@@ -51,7 +52,7 @@ export async function sendOwnerNotification(p: {
 }
 
 // Auto-respuesta al visitante con headers útiles
-export async function sendAutoReply(to: string, name: string, lang: "es" | "en" = "es") {
+export async function sendAutoReply(to: string, name: string, lang:string) {
   const L: "es" | "en" = lang === "en" ? "en" : "es";
   const safeName = (name ?? "").trim() || (L === "en" ? "friend" : "amigo");
   const esc = escapeHtml(safeName);

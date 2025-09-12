@@ -11,7 +11,7 @@ import { useI18n } from "../../hooks/usei18n";
 type Props = {
   open: boolean;
   onClose: () => void;
-  onSubmit: (data: ContactFormValues) => Promise<void> | void;
+  onSubmit: ( data: ContactFormValues) => Promise<void> | void;
 };
 
 export function ContactDialog({ open, onClose, onSubmit }: Props) {

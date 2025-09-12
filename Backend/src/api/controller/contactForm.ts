@@ -42,7 +42,8 @@ export const createContact: AsyncResponseServer<{}, CreateContactDTO> = async (
       message = "",
       company = "",
       phone = "",
-      website = "", // honeypot
+      website = "",// honeypot
+      lang = "" 
     } = (req.body ?? {}) as CreateContactDTO;
 
     if (website && website.trim().length > 0) {
@@ -69,7 +70,7 @@ export const createContact: AsyncResponseServer<{}, CreateContactDTO> = async (
     try {
       await sendOwnerNotification({ name, email, message, company, phone });
 
-      await sendAutoReply(email, name);
+      await sendAutoReply(email, name, lang);
     } catch (mailErr) {
       console.error("sendOwnerNotification failed:", mailErr);
     }
