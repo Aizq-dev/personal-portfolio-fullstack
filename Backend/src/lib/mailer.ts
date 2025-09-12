@@ -51,33 +51,57 @@ export async function sendOwnerNotification(p: {
 }
 
 // Auto-respuesta al visitante con headers útiles
-export async function sendAutoReply(to: string, name: string) {
-  const safeName = name?.trim() || "allí";
-  const text = [
-    `Hola ${safeName},`,
-    `Gracias por tu mensaje. Lo he recibido correctamente y te responderé en breve.`,
-    ``,
-    `— Adrián`,
-  ].join("\n");
+export async function sendAutoReply(to: string, name: string, lang: "es" | "en" = "es") {
+  const L: "es" | "en" = lang === "en" ? "en" : "es";
+  const safeName = (name ?? "").trim() || (L === "en" ? "friend" : "amigo");
+  const esc = escapeHtml(safeName);
 
-  const html = `
-    <p>Hola ${escapeHtml(safeName)},</p>
-    <p>Gracias por tu mensaje. Lo he recibido correctamente y te responderé en breve.</p>
-    <p>— Adrián</p>
-  `;
+  const tpl = {
+    es: {
+      subject: `Gracias, ${safeName} — he recibido tu mensaje`,
+      lines: [
+        `Hola ${safeName},`,
+        `Gracias por tu mensaje. Lo he recibido correctamente y te responderé en breve.`,
+        ``,
+        `— Adrián`,
+      ],
+      html: `
+        <p>Hola ${esc},</p>
+        <p>Gracias por tu mensaje. Lo he recibido correctamente y te responderé en breve.</p>
+        <p>— Adrián</p>
+      `,
+    },
+    en: {
+      subject: `Thanks, ${safeName} — I’ve received your message`,
+      lines: [
+        `Hi ${safeName},`,
+        `Thanks for your message. I’ve received it and will get back to you shortly.`,
+        ``,
+        `— Adrián`,
+      ],
+      html: `
+        <p>Hi ${esc},</p>
+        <p>Thanks for your message. I’ve received it and will get back to you shortly.</p>
+        <p>— Adrián</p>
+      `,
+    },
+  }[L];
 
   const info = await transporter.sendMail({
     from: process.env.MAIL_FROM!,
     to,
-    subject: `Gracias, ${safeName} — he recibido tu mensaje`,
-    text,                // ⬅️ parte texto
-    html,                // ⬅️ parte HTML
+    subject: tpl.subject,
+    text: tpl.lines.join("\n"),
+    html: tpl.html,
     headers: {
+      "Content-Language": L,
       "Auto-Submitted": "auto-replied",
       "X-Auto-Response-Suppress": "All",
     },
   });
+
   console.log("[MAIL autoresponse] accepted:", info.accepted, "rejected:", info.rejected);
+  return info;
 }
 
 function escapeHtml(s: string) {
