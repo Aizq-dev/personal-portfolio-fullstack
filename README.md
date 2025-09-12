@@ -10,20 +10,20 @@ This project is currently under development. It will serve as a personal portfol
 
 - [x] Project structure created
 - [x] Database connection configured
-- [ ] API routes (in progress)
-- [ ] Frontend interface (in progress)
-- [ ] Project listing page
-- [ ] Contact form functionality
+- [x] API routes (in progress)
+- [x] Frontend interface (in progress)
+- [x] Project listing page
+- [x] Contact form functionality
+- [x] Deployment (planned)
 - [ ] Admin panel (planned)
-- [ ] Deployment (planned)
-
 ---
 
 ## 🛠 Technologies
 
-- **Frontend:** React, Vite, TypeScript
+- **Frontend:** React, Vite, TypeScript,Tailwind CSS
 - **Backend:** Node.js, Express, TypeScript, Mongoose
 - **Database:** MongoDB
+- **Deployed: ** Vercel
 
 ---
 
