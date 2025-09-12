@@ -66,6 +66,7 @@ export const createContact: AsyncResponseServer<{}, CreateContactDTO> = async (
     }) as IContact;
     const contactBBDD = (await newContact.save()) as IContact;
     if (!contactBBDD) next(setError(400, "Can't create contact"));
+  
 
     try {
       await sendOwnerNotification({ name, email, message, company, phone });
@@ -79,7 +80,8 @@ export const createContact: AsyncResponseServer<{}, CreateContactDTO> = async (
   } catch (error) {
     next(setError(400, "Can't create contact 😢"));
   }
-};
+}
+
 
 export const deleteContact: AsyncResponseServer<{ id: string }> = async (
   req,

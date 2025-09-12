@@ -9,7 +9,10 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER!,              // adrizq.dev@gmail.com
     pass: process.env.SMTP_PASS!,              // App Password (16 chars)
   },
+  logger: true,
+  debug:true
 });
+transporter.verify((err,ok)=>{console.log("[SMTP verify"), err || ok})
 
 const MAIL_FROM = process.env.MAIL_FROM!;      // "Portfolio <adrizq.dev@gmail.com>"
 const MAIL_TO   = process.env.MAIL_TO!;        // "adrizq.dev+portfolio@gmail.com"

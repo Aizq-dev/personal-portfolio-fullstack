@@ -50,7 +50,7 @@ export interface IUser extends Document {
   _id?: string;
   userName: string;         
   role?: string;
-
+  password: string ,
   createdAt?: Date;
   updatedAt?: Date;
 }
