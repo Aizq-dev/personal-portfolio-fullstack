@@ -90,4 +90,5 @@ export type ContactFormValues = {
   email: string;
   message: string;
   website?: string; // honeypot
+  lang: Locale
 };

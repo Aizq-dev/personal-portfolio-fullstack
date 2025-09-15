@@ -5,7 +5,7 @@ import { Profile } from './components/header/profile/profile'
 import { Rrss } from './components/header/profile/rrss/rrss'
 import CursorHighlight from './components/cursorHightlight/CursorHightlight'
 import {  AllProjects } from './components/main/projects/AllProjects'
-import { Loader } from './components/loader/loaded'
+import { Loader } from './components/loader/loadingOverlay'
 import { LangSwitch } from './components/header/LangSwitch/LangSwitch'
 import { ButtonCV } from './components/header/cvButton/cvButton'
 

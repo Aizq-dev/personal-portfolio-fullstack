@@ -17,7 +17,7 @@ type Props = {
 export function ContactDialog({ open, onClose, onSubmit }: Props) {
   const formRef = useRef<HTMLFormElement | null>(null);
   const firstRef = useRef<HTMLInputElement | null>(null);
-  const { t } = useI18n();
+  const { t ,lang} = useI18n();
 
   const onPhoneInput: React.FormEventHandler<HTMLInputElement> = (e) => {
     const input = e.currentTarget;
@@ -59,6 +59,7 @@ export function ContactDialog({ open, onClose, onSubmit }: Props) {
       email: (data.email ?? "").toString().trim(),
       message: (data.message ?? "").toString().trim(),
       website: (data.website ?? "").toString(),
+      lang: (lang)
     };
 
     if (!payload.name || !payload.email || !payload.message) {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+/*import { useEffect, useState } from "react";
 import { LoadingOverlay } from "./loadingOverlay";
 import { useAppData } from "../../hooks/useAppData";
 
@@ -10,7 +10,6 @@ export const Loader =()=>{
  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simula la carga (sustituye por tu fetch real)
  if(profile)setIsLoading(false)
     
   }, [profile]); 
@@ -20,4 +19,4 @@ export const Loader =()=>{
 
 
 
-  return <><LoadingOverlay show={isLoading} text="Cargando perfil…" /></>}
+  return <><LoadingOverlay show={isLoading} text="Cargando perfil…" /></>}*/

@@ -5,16 +5,16 @@ import type { RrssItem, ContactFormValues } from "../../../../types/types";
 import { useAppData } from "../../../../hooks/useAppData";
 import { ContactDialog } from "../../../contact/contactDialog";
 import { sendContact } from "../../../../api/contact.api";
-import { useI18n } from "../../../../hooks/usei18n";
+
 
 export const Rrss = () => {
   const { profile } = useAppData();
   const [contactOpen, setContactOpen] = useState(false);
-const {lang}=useI18n()
+
   const rrss = (profile?.links ?? []) as RrssItem[];
 
   const handleSubmit = async (data: ContactFormValues, ) => {
-    const ok = await sendContact({...data, lang});
+    const ok = await sendContact(data);
     if (!ok) alert("No se pudo enviar. Inténtalo de nuevo.");
   };
 

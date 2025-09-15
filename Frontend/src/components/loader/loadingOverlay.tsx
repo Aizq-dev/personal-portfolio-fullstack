@@ -1,28 +1,127 @@
-type Props = { show: boolean; text?: string };
+// components/ModalLoader.tsx
+import React, { useState } from "react";
+import { useAppData } from "../../context/AppDataContext";
 
-export function LoadingOverlay({ show, text = "Cargando…" }: Props) {
+type BackdropStyle = "blur" | "dim" | "solid";
+
+type ModalLoaderProps = {
+             // muestra/oculta el overlay (usa tu "loading" o "error")
+  error?: boolean;
+  onRetry?: () => void;
+  onLite?: () => void;
+  showElapsed?: boolean;      // muestra "Tiempo/Elapsed"
+  actionDelayMs?: number;     // cuándo mostrar acciones (por defecto 15s)
+  backdrop?: BackdropStyle;   // "blur" | "dim" | "solid"
+};
+
+export const Loader: React.FC<ModalLoaderProps> = ({
+
+  error = false,
+  onRetry,
+  onLite,
+  showElapsed = true,
+  actionDelayMs = 15000,
+  backdrop = "blur",
+}) => {
+  const [elapsedMs, setElapsedMs] = React.useState(0);
+const {profile}= useAppData()
+const [open , setOpen]=useState(true)
+  // Cronómetro
+  React.useEffect(() => {
+    if (profile)setOpen(false)
+    if (!open) {
+      setElapsedMs(0);
+      return;
+    }
+    const start = performance.now();
+    const id = setInterval(() => setElapsedMs(performance.now() - start), 250);
+    return () => clearInterval(id);
+  }, [profile, open]);
+
+  // Bloquear scroll de la página cuando el modal está abierto
+  React.useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  const s = Math.floor(elapsedMs / 1000);
+
+  // Mensajes bilingües por tramos
+  const message = React.useMemo(() => {
+    if (error)
+      return "No hemos podido cargar el contenido. Reintentar / We couldn’t load the content. Retry ";
+    if (s < 3) return "Cargando… / Loading…";
+    if (s < 8)
+      return "Despertando el servidor (la primera carga puede tardar) / Warming up the server (first load may take a moment)…";
+    if (s < 15) return "Ya casi está… / Almost there…";
+    return "Está tardando más de lo normal. Reintentar / Taking longer than usual. Retry ";
+  }, [s, error]);
+
+  const showActions = error || elapsedMs >= actionDelayMs;
+
+  if (!open) return null;
+
+  // Backdrop styles
+  const backdropClass =
+    backdrop === "solid"
+      ? "bg-white"
+      : backdrop === "dim"
+      ? "bg-black/50"
+      : "backdrop-blur-sm bg-black/10"; // blur por defecto
+
   return (
     <div
-      aria-hidden={!show}
-      className={[
-        "fixed inset-0 z-50 flex items-center justify-center",
-        "bg-black/40 backdrop-blur-sm",
-        "transition-opacity duration-300",
-        show ? "opacity-100" : "opacity-0 pointer-events-none"
-      ].join(" ")}
+      className="fixed inset-0 z-[1000] flex items-center justify-center"
+      aria-live="polite"
+      aria-modal="true"
+      role="dialog"
     >
-      <div
-        role="status"
-        aria-live="polite"
-        className="flex items-center gap-3 rounded-2xl px-5 py-4 shadow-xl
-                   bg-white/80 dark:bg-neutral-900/80"
-      >
-        <span
-          className="h-5 w-5 inline-block animate-spin rounded-full 
-                     border-2 border-current border-t-transparent"
-        />
-        <span className="text-sm font-medium">{text}</span>
+      {/* Backdrop */}
+      <div className={`absolute inset-0 ${backdropClass} transition-opacity`} />
+
+      {/* Card */}
+      <div className="relative mx-4 w-full max-w-md rounded-2xl border border-gray-200/60 bg-white/95 shadow-xl p-6 text-center space-y-4 animate-in fade-in zoom-in duration-200">
+        {/* Spinner */}
+        <div className="mx-auto h-10 w-10 rounded-full border-2 border-gray-300 border-t-transparent animate-spin" />
+
+        {/* Mensaje */}
+        <p className="text-sm text-gray-800 leading-relaxed">{message}</p>
+
+        {/* Tiempo transcurrido */}
+        {showElapsed && (
+          <p className="text-xs text-gray-500">
+            Tiempo transcurrido: {s} s / Elapsed time: {s} s
+          </p>
+        )}
+
+        {/* Acciones */}
+        {showActions && (onRetry || onLite) && (
+          <div className="flex items-center justify-center gap-3 pt-2">
+            {onRetry && (
+              <button
+                type="button"
+                onClick={onRetry}
+                className="px-3 py-2 text-sm rounded-xl border border-gray-300 hover:bg-gray-50 active:scale-[0.98] transition"
+              >
+                Reintentar / Retry
+              </button>
+            )}
+           
+          </div>
+        )}
+
+        {/* Nota inferior */}
+        {!error && (
+          <p className="text-[11px] text-gray-400 pt-1">
+            Si es tu primera visita tras un rato sin actividad, puede tardar un poco más /
+            On your first visit after inactivity, it may take a bit longer
+          </p>
+        )}
       </div>
     </div>
   );
-}
+};
