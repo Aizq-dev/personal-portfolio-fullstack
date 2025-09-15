@@ -1,11 +1,12 @@
-// components/ModalLoader.tsx
-import React, { useState } from "react";
+
+
+import { useEffect, useMemo, useState } from "react";
 import { useAppData } from "../../context/AppDataContext";
 
 type BackdropStyle = "blur" | "dim" | "solid";
 
 type ModalLoaderProps = {
-             // muestra/oculta el overlay (usa tu "loading" o "error")
+
   error?: boolean;
   onRetry?: () => void;
   onLite?: () => void;
@@ -15,20 +16,19 @@ type ModalLoaderProps = {
 };
 
 export const Loader: React.FC<ModalLoaderProps> = ({
-
+  
   error = false,
   onRetry,
-  onLite,
   showElapsed = true,
-  actionDelayMs = 15000,
+  actionDelayMs = 2000,
   backdrop = "blur",
 }) => {
-  const [elapsedMs, setElapsedMs] = React.useState(0);
+  const [elapsedMs, setElapsedMs] = useState(0);
 const {profile}= useAppData()
 const [open , setOpen]=useState(true)
   // Cronómetro
-  React.useEffect(() => {
-    if (profile)setOpen(false)
+useEffect(() => {
+   if (profile)setOpen(false)
     if (!open) {
       setElapsedMs(0);
       return;
@@ -36,10 +36,10 @@ const [open , setOpen]=useState(true)
     const start = performance.now();
     const id = setInterval(() => setElapsedMs(performance.now() - start), 250);
     return () => clearInterval(id);
-  }, [profile, open]);
+  }, [ open, profile]);
 
-  // Bloquear scroll de la página cuando el modal está abierto
-  React.useEffect(() => {
+  
+  useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -51,7 +51,7 @@ const [open , setOpen]=useState(true)
   const s = Math.floor(elapsedMs / 1000);
 
   // Mensajes bilingües por tramos
-  const message = React.useMemo(() => {
+  const message = useMemo(() => {
     if (error)
       return "No hemos podido cargar el contenido. Reintentar / We couldn’t load the content. Retry ";
     if (s < 3) return "Cargando… / Loading…";
@@ -99,7 +99,7 @@ const [open , setOpen]=useState(true)
         )}
 
         {/* Acciones */}
-        {showActions && (onRetry || onLite) && (
+        {showActions && (onRetry ) && (
           <div className="flex items-center justify-center gap-3 pt-2">
             {onRetry && (
               <button
