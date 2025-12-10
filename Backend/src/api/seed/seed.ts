@@ -490,7 +490,18 @@ Roadmap:
       demoUrl: "https://izbzridkik.myfunnelish.com/landing-page",
       stack: "frontend",
       origin: "professional",
-    },
+    }, {
+    "locale": "es",
+    "title": "Volturex Web",
+    "description": "Sitio web corporativo para una empresa del sector eléctrico. Incluye homepage orientada a conversión, breve descripción de servicios, formulario de contacto con validación, protección antispam (reCAPTCHA) y envío de emails. SEO técnico aplicado (metadatos, Open Graph, sitemap/robots y estructura semántica) y diseño responsive con tiempos de carga optimizados. Frontend conectado al backend mediante rewrite.",
+    "img": "https://res.cloudinary.com/ddumhsyl6/image/upload/v1765388568/Volturex.png",
+    "gif": "https://res.cloudinary.com/ddumhsyl6/video/upload/v1765388570/Volturex_gif.mp4",
+    "tech": ["React 19", "React DOM", "Vite", "Tailwind CSS", "PostCSS", "Autoprefixer", "react-google-recaptcha", "Nodemailer"],
+    "githubUrl": "https://github.com/Aizq-dev/Volturex",
+    "demoUrl": "https://volturex.net/",
+    "stack": "fullstack",
+    "origin": "professional"
+  },
     // EN
     {
       locale: "en",
@@ -511,6 +522,15 @@ Roadmap:
       demoUrl: "https://izbzridkik.myfunnelish.com/landing-page",
       stack: "frontend",
       origin: "professional",
-    },
+    },{"locale": "en",
+    "title": "Volturex Web",
+    "description": "Corporate website for an electrical services company. It includes a conversion-oriented homepage, a brief services overview, a contact form with validation, anti-spam protection (reCAPTCHA), and email delivery. Technical SEO applied (metadata, Open Graph, sitemap/robots, semantic structure) and a responsive design optimized for load times. Frontend connected to the backend via rewrite.",
+    "img": "https://res.cloudinary.com/ddumhsyl6/image/upload/v1765388568/Volturex.png",
+    "gif": "https://res.cloudinary.com/ddumhsyl6/video/upload/v1765388570/Volturex_gif.mp4",
+    "tech": ["React 19", "React DOM", "Vite", "Tailwind CSS", "PostCSS", "Autoprefixer", "react-google-recaptcha", "Nodemailer"],
+    "githubUrl": "https://github.com/Aizq-dev/Volturex",
+    "demoUrl": "https://volturex.net/",
+    "stack": "fullstack",
+    "origin": "professional"}
   ],
 };
